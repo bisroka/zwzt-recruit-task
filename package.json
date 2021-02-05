@@ -2,7 +2,7 @@
   "name": "zadanie",
   "version": "1.0.0",
   "description": "Frontend mini-framework with router and template engine",
-  "main": "app.js",
+  "main": "src/app.js",
   "scripts": {
     "dev": "webpack serve --open",
     "test": "echo \"Error: no test specified\" && exit 1"

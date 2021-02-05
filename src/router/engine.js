@@ -1,11 +1,13 @@
-// Simple JavaScript Templating
-// John Resig - https://johnresig.com/ - MIT Licensed
-const cache = {};
+// // Simple JavaScript Templating
+// // John Resig - https://johnresig.com/ - MIT Licensed
+import { templates } from "../templates/index.templates.js"
+const cache = {  };
 
 export const engine = (str, data) => {
   // Figure out if we're getting a template, or if we need to
   // load the template - and be sure to cache the result.
-  const fn = !/\W/.test(str) ? cache[str] = cache[str] || engine(document.getElementById(str).innerHTML) :
+  const fn = !/\W/.test(str) ? cache[str] = cache[str] || 
+  engine(templates[str]) :
     // Generate a reusable function that will serve as a template
     // generator (and which will be cached).
     new Function("obj",
@@ -22,7 +24,8 @@ export const engine = (str, data) => {
         .split("%>").join("p.push('")
         .split("\r").join("\\'")
     + "');}return p.join('');");
-   
+
   // Provide some basic currying to the user
   return data ? fn( data ) : fn;
 };
+
